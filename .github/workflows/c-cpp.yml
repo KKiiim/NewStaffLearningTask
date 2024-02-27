@@ -1,0 +1,13 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  setup_qemu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install qemu
+        run: |
+          apt update && apt install qemu
