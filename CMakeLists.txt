@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 project(test-arm64-asm)
 
 
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/output/)
+# set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/output/)
 
 # 设置交叉编译工具链和编译选项
 set(CMAKE_SYSTEM_NAME Linux)
