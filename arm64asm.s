@@ -55,7 +55,7 @@ myQuickSort:
 _my_quick_sort_ret:
     RET
 
-_partition:
+partition:
     MOV     X10, X1
     MOV     X11, X2
     LDR     W20, [X0, X1, LSL #2]
