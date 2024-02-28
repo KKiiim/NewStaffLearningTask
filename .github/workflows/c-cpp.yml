@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  setup_qemu:
+  test-on-arm64:
     runs-on: ubuntu-latest
     steps:
       - 
@@ -24,7 +24,7 @@ jobs:
           git clone https://github.com/google/googletest.git && 
           mkdir gtest-build && 
           cd gtest-build && cmake ../googletest/ -DCMAKE_INSTALL_PREFIX=/usr/aarch64-linux-gnu -DCMAKE_CXX_COMPILER=/usr/bin/aarch64-linux-gnu-g++ && 
-          make && make install
+          make && sudo make install
       -
         uses: actions/checkout@v3
       -
