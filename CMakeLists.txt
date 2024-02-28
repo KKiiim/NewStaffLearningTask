@@ -39,5 +39,5 @@ target_link_libraries(arm64asm_test
 
 add_test(
     NAME arm64asm_test
-    COMMAND "qemu-aarch64" -L /usr/aarch64-linux-gnu ../bin/ctestQsort
+    COMMAND "qemu-aarch64" -L /usr/aarch64-linux-gnu ./output/arm64asm_test
 )
