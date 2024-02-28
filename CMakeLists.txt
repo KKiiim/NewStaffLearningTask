@@ -1,32 +1,43 @@
-cmake_minimum_required(VERSION 3.14)
-project(startup)
+cmake_minimum_required(VERSION 3.15)
+project(test-arm64-asm)
 
-# GoogleTest requires at least C++14
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/output/)
+
+# 设置交叉编译工具链和编译选项
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_PROCESSOR aarch64)
+
+# 设置交叉编译工具链路径
+set(CMAKE_C_COMPILER aarch64-linux-gnu-gcc)
+set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++)
+
+# 设置编译选项
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Og")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Og")
+
+# 设置汇编文件和C文件的路径
+set(ASM_SOURCE ${HOME}/arm64asm.s)
+set(C_SOURCE ${HOME}/src/qsort.cpp)
+
+# 将汇编文件和C文件编译为对象文件
+enable_language(ASM)
+
+
+# 链接对象文件生成可执行文件
+add_executable(arm64asm_test
+  arm64asm.s
+  googleTest.cc
 )
-# For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
-SET(ASM_OPTIONS "-x assembler-with-cpp")
-ENABLE_LANGUAGE( ASM)
 
 enable_testing()
-
-add_executable(
-  hello_test
-  googleTest.cc
-  arm64asm.s
-)
-target_link_libraries(
-  hello_test
-  GTest::gtest_main
+target_link_libraries(arm64asm_test
+    gtest
+    gtest_main
+    pthread
 )
 
-include(GoogleTest)
-gtest_discover_tests(hello_test)
+add_test(
+    NAME arm64asm_test
+    COMMAND "qemu-aarch64" -L /usr/aarch64-linux-gnu ../bin/ctestQsort
+)

@@ -7,40 +7,27 @@ on:
 jobs:
   setup_qemu:
     runs-on: ubuntu-latest
-    arch:
-      - arm64
     steps:
-      -
+      - 
         name: install build essentials
-        run: sudo apt update && sudo apt install cmake gcc g++ make build-essentials
-      # -
-      #   name: checkout codes
-      #   uses: 
-      # - 
-      #   name: Docker Setup QEMU
-      #   uses: docker/setup-qemu-action@v3.0.0
-      #   with:
-      #     # QEMU static binaries Docker image (e.g. tonistiigi/binfmt:latest)
-      #     # image: # optional, default is tonistiigi/binfmt:latest
-      #     # Platforms to install (e.g. arm64,riscv64,arm)
-      #     platforms: arm64 # optional, default is all
-      # - 
-      #   name: install qemu-utils
-      #   run: |
-      #     sudo apt update && sudo apt install qemu qemu-utils qemu-efi-aarch64 qemu-system-arm
-      # -
-      #   name: download debian-12-arm64 image
-      #   run: |
-      #     wget -O debian12-arm64.qcow2 https://cloud.debian.org/images/cloud/bookworm/20230531-1397/debian-12-nocloud-arm64-20230531-1397.qcow2
-      # -
-      #   name: start qemu for debian-12-arm64
-      #   run: |
-      #     qemu-system-aarch64 \
-      #     -M virt -m 4G -cpu cortex-a72 -smp 2 \
-      #     -bios /usr/share/qemu-efi-aarch64/QEMU_EFI.fd \
-      #     -drive id=hd0,media=disk,if=none,file=debian12-arm64.qcow2 \
-      #     -device virtio-scsi-pci \
-      #     -device scsi-hd,drive=hd0 \
-      #     -nic user,model=virtio-net-pci \
-      #     -nographic
-
+        run: 
+          sudo apt update && \
+          sudo apt install gcc g++ libgtest-dev cmake make build-essential sed gcc-aarch64-linux-gnu g++-aarch64-linux-gnu  
+      
+      - 
+        name: install qemu
+        run: 
+          sudo apt install qemu-user
+        
+      - name: cross-compile gtest for arm64
+        run: |
+          git clone https://github.com/google/googletest.git && \
+          mkdir gtest-build && \
+          cd gtest-build && cmake ../googletest/ -DCMAKE_INSTALL_PREFIX=./install -DCMAKE_CXX_COMPILER=/usr/bin/aarch64-linux-gnu-g++ && \
+          make && make install &&\
+      -
+        uses: actions/checkout@v3
+      -
+        name: cmake make and run
+        run: |
+          mkdir build && cd build && cmake .. && make && arm64asm_test
