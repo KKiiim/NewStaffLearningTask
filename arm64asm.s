@@ -45,12 +45,12 @@ myQuickSort:
     STP     X1, X2, [SP, #-0x10]!
     SUB     X2, X2, 1
     STP     LR, X3, [SP, #-0x10]!
-    BL      _myQuickSort
+    BL      myQuickSort
     LDP     LR, X3, [SP], #0x10
     LDP     X1, X2, [SP], #0x10
     ADD     X1, X10, #1
     STP     LR, X10, [SP, #-0x10]!
-    BL      _myQuickSort
+    BL      myQuickSort
     LDP     LR, X10, [SP], #0x10
 _my_quick_sort_ret:
     RET
