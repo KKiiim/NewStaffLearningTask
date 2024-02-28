@@ -21,10 +21,10 @@ jobs:
         
       - name: cross-compile gtest for arm64
         run: |
-          git clone https://github.com/google/googletest.git && \
-          mkdir gtest-build && \
-          cd gtest-build && cmake ../googletest/ -DCMAKE_INSTALL_PREFIX=./install -DCMAKE_CXX_COMPILER=/usr/bin/aarch64-linux-gnu-g++ && \
-          make && make install &&\
+          git clone https://github.com/google/googletest.git && 
+          mkdir gtest-build && 
+          cd gtest-build && cmake ../googletest/ -DCMAKE_INSTALL_PREFIX=./install -DCMAKE_CXX_COMPILER=/usr/bin/aarch64-linux-gnu-g++ && 
+          make && make install
       -
         uses: actions/checkout@v3
       -
