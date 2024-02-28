@@ -11,7 +11,7 @@ jobs:
       - 
         name: install build essentials
         run: 
-          sudo apt update && \
+          sudo apt update && 
           sudo apt install gcc g++ libgtest-dev cmake make build-essential sed gcc-aarch64-linux-gnu g++-aarch64-linux-gnu  
       
       - 
