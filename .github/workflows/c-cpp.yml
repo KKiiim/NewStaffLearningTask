@@ -11,4 +11,4 @@ jobs:
       - 
         name: install qemu
         run: |
-          apt update && apt install qemu
+          sudo apt update && sudo apt install qemu
