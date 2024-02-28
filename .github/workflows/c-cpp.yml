@@ -33,6 +33,6 @@ jobs:
           -drive id=hd0,media=disk,if=none,file=debian12-arm64.qcow2 \
           -device virtio-scsi-pci \
           -device scsi-hd,drive=hd0 \
-          -nic user,model=virtio-net-pci,hostfwd=tcp::2222-:22\
+          -nic user,model=virtio-net-pci \
           -nographic
 
