@@ -39,7 +39,7 @@ myQuickSort:
     CMP     X1, X2
     BGE     _my_quick_sort_ret
     STP     LR, X1, [SP, #-0x10]!
-    BL      _partition
+    BL      partition
     LDP     LR, X1, [SP], #0x10
     
     STP     X1, X2, [SP, #-0x10]!
