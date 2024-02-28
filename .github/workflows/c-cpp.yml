@@ -30,4 +30,4 @@ jobs:
       -
         name: cmake make and run
         run: |
-          mkdir build && cd build && cmake .. && make && ./output/arm64asm_test
+          mkdir build && cd build && cmake .. && make && ./arm64asm_test
