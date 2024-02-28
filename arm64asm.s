@@ -1,8 +1,8 @@
 
 .text
-.global _myAbs, _myMemset, _myGetSum, _myQuickSort, _partition
+.global myAbs, myMemset, myGetSum, myQuickSort, partition
 
-_myAbs:
+myAbs:
     CMP X0, #0
     BPL abs_ret
     NEG X0, X0
@@ -10,7 +10,7 @@ abs_ret:
     RET
 
 
-_myMemset:
+myMemset:
     MOV     X3, #0
     CMP     X1, #0
     BEQ     memset_ret
@@ -23,7 +23,7 @@ memset_ret:
     MOV X0, X3
     RET
 
-_myGetSum:
+myGetSum:
     MOV X2, #0
     MOV X1, #0
 getsum_loop:
@@ -35,7 +35,7 @@ getsum_ret:
     MOV X0, X2
     RET
 
-_myQuickSort:
+myQuickSort:
     CMP     X1, X2
     BGE     _my_quick_sort_ret
     STP     LR, X1, [SP, #-0x10]!
