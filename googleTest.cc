@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <gtest/gtest.h>
 
-// Demonstrate some basic assertions.
 TEST(myAbs, BasicAssertions) {
   EXPECT_EQ(myAbs(-8), 8);
   EXPECT_EQ(myAbs(-4294967296), 4294967296);
@@ -71,7 +70,6 @@ TEST(myGetSum, BasicAssertions) {
 
 TEST(myQuickSort, BasicAssertions) {
     int raw[] = {6, 7, 8, 9, 0, 2, 3, 1, 4, 5};
-    // int32_t raw[] = {2, 3, 1};
     int32_t raw_len = sizeof(raw) / sizeof(int32_t);
     printf("array[%d]: ", raw_len);
     PrintArray(raw, raw_len);
@@ -79,19 +77,3 @@ TEST(myQuickSort, BasicAssertions) {
     printf("after sort: ");
     EXPECT_PRED2(AssertSort, (int*)raw, raw_len);
 }
-
-// #include <iostream>
-// #include <stdio.h>
-// // extern "C" uint64_t myAbs(int64_t x);
-// int main() {
-//     int raw[] = {-1, 5,5,5,6,7,8,9,15, 8772833};
-//     int raw_len = sizeof(raw) / sizeof(int);
-//     int res;
-//     myQuickSort(raw, 0, raw_len - 1);
-//     for (int i = 0; i < raw_len; i ++) {
-//         printf("%d: %d\n", i, raw[i]);
-//     }
-//     // std::cout << res;
-//     // printf("%d\n", res);
-// }
-

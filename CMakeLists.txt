@@ -13,8 +13,8 @@ set(CMAKE_C_COMPILER aarch64-linux-gnu-gcc)
 set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++)
 
 # 设置编译选项
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Og")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Og")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 
 # 设置汇编文件和C文件的路径
 set(ASM_SOURCE ${HOME}/arm64asm.s)
@@ -34,7 +34,6 @@ enable_testing()
 target_link_libraries(arm64asm_test
     gtest
     gtest_main
-    pthread
 )
 
 add_test(
