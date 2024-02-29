@@ -1,5 +1,5 @@
 (module
-    (func $abs (param $in i32) (result i32)
+    (func $myAbs (param $in i32) (result i32)
         i32.const 0
         local.get $in
         i32.gt_s
@@ -36,5 +36,6 @@
             local.get $res
         )
     )
-  (func $myGetSum (param ))
+    (export "myAbs" (func $myAbs))
+    (export "myGetSum" (func $myGetSum))
 )
