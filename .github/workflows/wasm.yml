@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: webassembly tests
 
 on:
   pull_request:
@@ -20,8 +20,9 @@ jobs:
       - 
         name: install mocha
         run: |
+          cd wasm &&
           npm install -g mocha
       -
         name: run test
         run: |
-          npx run wasm.test.js
+          npx run mocha wasm.test.js
