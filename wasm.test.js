@@ -11,44 +11,6 @@ function LoadWasm(cfg){
     }
 }
 
-function LogI32(i32) {
-    console.log('i32:', '0x' + i32.toString(16))
-}
-
-function LogSplit() {
-    console.log('----------')
-}
-
-function logSwitch(a, b) {
-    console.log('switch', a, b)
-}
-
-function logCompare(a, b) {
-    console.log('compare', a, b)
-}
-
-describe('test myAbs', function() {
-    LoadWasm().then(wasmModule => {
-        const { myAbs } = wasmModule.instance.exports;
-        it('myAbs', function() {
-        })
-    })
-})
-
-
-describe('test myMemset', function() {
-    let mem = new WebAssembly.Memory({initial: 1})
-    LoadWasm({js: {mem: mem}}).then(wasmModule => {
-        const { myMemset } = wasmModule.instance.exports;
-        it('myMemset', function() {
-            myMemset(5, 10, 0x05)
-            myMemset(10, 10, 0x08)
-            let buf = new Uint8Array(mem.buffer, 0, 20);
-            console.log('buf', buf)
-        })
-    })
-})
-
 describe('test wasm', function() {
     let mem = new WebAssembly.Memory({initial: 1})
     LoadWasm({mem: {mem: mem}}).then(wasmModule => {
