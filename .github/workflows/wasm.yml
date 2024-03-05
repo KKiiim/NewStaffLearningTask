@@ -13,7 +13,7 @@ jobs:
         name: install build essentials
         run: 
           sudo apt update && 
-          sudo apt install nodejs
+          sudo apt install nodejs wabt
       
       -
         uses: actions/checkout@v3
@@ -25,4 +25,5 @@ jobs:
       -
         name: run test
         run: |
-          npx run mocha wasm.test.js
+          wat2wasm -o wasm.wasm wasm.wat &&
+          npx mocha wasm.test.js
