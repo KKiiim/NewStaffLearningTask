@@ -25,5 +25,6 @@ jobs:
       -
         name: run test
         run: |
+          cd wasm && 
           wat2wasm -o wasm.wasm wasm.wat &&
           npx mocha wasm.test.js
