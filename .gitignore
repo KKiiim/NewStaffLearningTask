@@ -1,6 +1,7 @@
 build/
 arm64/build
 wasm/node_modules/
+as/node_modules/
 wasm/*.wasm
 .DS_Store/
 .vscode/

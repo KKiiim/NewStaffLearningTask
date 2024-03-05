@@ -1,0 +1,29 @@
+name: assemblyscript tests
+
+on:
+  pull_request:
+    branches: [ "yiyang" ]
+  push:
+    branches: [ "yiyang" ]
+jobs:
+  test-wasm:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: install build essentials
+        run: 
+          sudo apt update && 
+          sudo apt install nodejs wabt
+      -
+        uses: actions/checkout@v3
+      - 
+        name: install assemblyscript
+        run: |
+          cd as &&
+          npm install --save-dev assemblyscript
+      -
+        name: build & run test
+        run: |
+          cd as && 
+          npm run asbuild &&
+          npm run test
