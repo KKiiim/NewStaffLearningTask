@@ -46,3 +46,16 @@
 [Cmake](https://subingwen.cn/cmake/CMake-primer/index.html) learn how to use the cmake toolchain to compile a project.  
 [Node.js](https://cloud.tencent.com/developer/article/1037475 ) help to understanding the underlying principles of Node.js.  
 [Linker](https://jia.je/software/2023/05/06/linker/)  learn how the linker process works.  
+
+
+
+>
+> 
+# Some SmallBUTBeautiful Programming Questions  
+### Thread synchronization (state machines)  
+  There are three kinds of threads:  
+  Thread1 dead-loop to print the character '<'  
+  Thread2 dead-loop to print the character '>'  
+  Thread3 dead-loop to print the character ' '  
+  Synchronize these threads, so that the terminal prints the combination of '<>< ' and '><> '.  
+  Like two small fish with different tail orientations.
