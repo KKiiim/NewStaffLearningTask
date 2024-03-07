@@ -25,5 +25,6 @@ jobs:
         name: build & run test
         run: |
           cd as && 
+          npx asinit . -y &&
           npm run asbuild &&
           npm run test

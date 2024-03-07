@@ -17,13 +17,15 @@
         )
         return
     )
-    (func $myGetSum (param $n i32) (result i32) (local $res i32)
-        i32.const 0
+    (func $myGetSum (param $n i32) (result i64)
+        (local $n64 i64) (local $res i64)
+        i64.const 0
         local.set $res
-        (loop $loop (result i32)
+        (loop $loop (result i64)
             local.get $n
+            i64.extend_i32_s
             local.get $res
-            i32.add
+            i64.add
             local.set $res
             local.get $n
             i32.const 1
@@ -138,7 +140,6 @@
                     i32.const 4
                     i32.mul
                     i32.load
-                    ;; local.get $pivot
                     local.get $left
                     i32.const 4
                     i32.mul
@@ -156,11 +157,6 @@
 
     (func $myQuickSort (param $start i32) (param $end i32)
         (local $pivot i32)
-        ;; call $logSplit
-        ;; local.get $start
-        ;; call $logI32
-        ;; local.get $end
-        ;; call $logI32
         local.get $start
         local.get $end
         i32.ge_s
@@ -173,9 +169,6 @@
         local.get $end
         call $partition
         local.set $pivot
-        ;; local.get $pivot
-        ;; call $logArr
-        ;; call $logI32
         local.get $start
         local.get $pivot
         i32.const 1
