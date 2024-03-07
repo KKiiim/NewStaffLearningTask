@@ -32,5 +32,6 @@ jobs:
       -
         name: cmake make and run
         run: |
+          cd arm64 &&
           mkdir build && cd build && cmake .. && make && 
           "qemu-aarch64" -L /usr/aarch64-linux-gnu ./arm64asm_test

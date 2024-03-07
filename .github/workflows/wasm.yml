@@ -1,0 +1,35 @@
+name: webassembly tests
+
+on:
+  pull_request:
+    branches: [ "yiyang" ]
+  push:
+    branches: [ "yiyang" ]
+jobs:
+  test-wasm:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: install build essentials
+        run: 
+          sudo apt update && 
+          sudo apt install wabt
+      -
+        uses: actions/checkout@v3
+      -
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: wasm/package-lock.json
+      - 
+        name: install mocha
+        run: |
+          cd wasm &&
+          npm ci
+      -
+        name: run test
+        run: |
+          cd wasm && 
+          wat2wasm -o wasm.wasm wasm.wat &&
+          npx mocha wasm.test.js
