@@ -9,7 +9,7 @@
 3. implement functions with arm64 assembly language:  
 **cross-compiling: caller in main with C and callee functions with Assembly**   
 >     abs(Absolute value)  
->     memset  
+>     memcpy  
 >     getSum(Calculate the sum from 0 to n)  
 >     QuickSort algorithm   
 4. add googleTest for the functions above with CMakeLists
@@ -23,7 +23,7 @@
 3. implement functions with  WebAssembly language:  
  **caller webassembly module instance with typescript and callee functions with WAT**  
 >     abs(Absolute value)  
->     memset  
+>     memcpy  
 >     getSum(Calculate the sum from 0 to n)  
 >     QuickSort algorithm  
 4. add mocha-test and CI pipeline  
@@ -34,11 +34,14 @@
 1. reference: https://www.assemblyscript.org/introduction.html#from-a-webassembly-perspective
 2. implement functions:   
 >     abs(Absolute value)  
->     memset  
+>     memcpy  
 >     getSum(Calculate the sum from 0 to n)  
 >     QuickSort algorithm  
 3. add test and CI pipeline  
 
+## Optimize  
+Improve the performance of `memcpy` as much as possible.  
+  
 ## Tools  
 [Compile online](https://godbolt.org/) compile you code in different platform with different compiler  
 
